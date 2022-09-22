@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:39:54 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/22 14:17:43 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/22 14:31:18 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,15 @@ std::ostream &	operator<<( std::ostream & o, ClapTrap const & C )
 
 void	ClapTrap::attack( const string &target ) {
 
-	if (this->getEnergypoints())
+	if (this->getEnergypoints() && this->getHitpoints())
 	{
 		cout << "ClapTrap " << this->getName() << " attacks " << target << ", causing " << this->getAttackdamage() << " point of damage !" << endl;
 		this->setEnergypoints( std::max(this->getEnergypoints() - 1, 0) );
 	}
-	else
+	else if (this->getHitpoints())
 		cout << "ClapTrap " << this->getName() << " try to attacks " << target << " but lack the energy to do it" << endl;
+	else
+		cout << "ClapTrap " << this->getName() << " try to attacks " << target << " but can't because he's dead" << endl;
 	return;
 }
 
@@ -94,12 +96,12 @@ void	ClapTrap::takeDamage( unsigned int amount ) {
 		cout << "ClapTrap " << this->getName() << " take 0 damage because he's already dead..." << endl;
 	else if ((unsigned int)( this->getHitpoints() ) <= amount )
 	{
-		cout << "ClapTrap " << this->getName() << " take " << this->getHitpoints() << "damage and die like the looser he is" << endl;
+		cout << "ClapTrap " << this->getName() << " take " << this->getHitpoints() << " damage and die like the looser he is" << endl;
 		this->setHitpoints(0);
 	}
 	else
 	{
-		cout << "ClapTrap " << this->getName() << " take " << amount << "damage and tank it like the real robot he is" << endl;
+		cout << "ClapTrap " << this->getName() << " take " << amount << " damage and tank it like the real robot he is" << endl;
 		this->setHitpoints(this->getHitpoints() - amount);
 	}
 	return;
@@ -111,7 +113,7 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 		cout << "ClapTrap " << this->getName() << " couldn't heal because he's already dead..." << endl;
 	else if (this->getEnergypoints() && (unsigned int)( this->getMaxhitpoints() - this->getHitpoints() ) <= amount)
 	{
-		cout << "ClapTrap " << this->getName() << " heal " << this->getMaxhitpoints() - this->getHitpoints() << "damage and feel heathy" << endl;
+		cout << "ClapTrap " << this->getName() << " heal " << this->getMaxhitpoints() - this->getHitpoints() << " damage and feel heathy" << endl;
 		this->setHitpoints(this->getMaxhitpoints());
 	}
 	else if (this->getEnergypoints())
@@ -120,7 +122,7 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 		this->setHitpoints(this->getHitpoints() + amount);
 	}
 	else
-		cout << "ClapTrap " << this->getName() << "try to heal himslefs but fail" << endl;
+		cout << "ClapTrap " << this->getName() << " try to heal himslefs but fail" << endl;
 	this->setEnergypoints(std::max(this->getEnergypoints() - 1, 0));
 }
 

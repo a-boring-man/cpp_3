@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:50:16 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/22 14:15:37 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/22 14:33:03 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,42 @@ int	main( void ) {
 	cout << "energy : " << c1.getEnergypoints() << endl;
 	c1.attack("dummie");
 	cout << "energy : " << c1.getEnergypoints() << endl;
+	cout << "--------------------" << endl << endl;
+
+	// test sur la vie
+	cout << "-------------" << endl;
+	c2.attack("dummie");
+	c2.takeDamage(3);
+	cout << "energy : " << c2.getEnergypoints() << endl << "life : " << c2.getHitpoints() << endl;
+	c2.attack("dummie");
+	c2.takeDamage(10);
+	cout << "energy : " << c2.getEnergypoints() << endl << "life : " << c2.getHitpoints() << endl;
+	c2.attack("dummie");
+	cout << "energy : " << c2.getEnergypoints() << endl;
+	cout << "--------------------" << endl << endl;
+
+	// test sur le soin
+	cout << "-------------" << endl;
+	c3.attack("dummie");
+	c3.takeDamage(3);
+	cout << "energy : " << c3.getEnergypoints() << endl << "life : " << c3.getHitpoints() << endl;
+	c3.beRepaired(10);
+	cout << "energy : " << c3.getEnergypoints() << endl << "life : " << c3.getHitpoints() << endl;
+	c3.takeDamage(9);
+	cout << "energy : " << c3.getEnergypoints() << endl << "life : " << c3.getHitpoints() << endl;
+	c3.beRepaired(7);
+	cout << "energy : " << c3.getEnergypoints() << endl << "life : " << c3.getHitpoints() << endl;
+	c3.attack("dummie");
+	c3.attack("dummie");
+	c3.attack("dummie");
+	c3.attack("dummie");
+	c3.attack("dummie");
+	c3.attack("dummie");
+	c3.attack("dummie"); // a commenter aussi du coup
+	cout << "energy : " << c3.getEnergypoints() << endl;
+	c3.takeDamage(5);
+	//c3.takeDamage(99);
+	cout << "energy : " << c3.getEnergypoints() << endl << "life : " << c3.getHitpoints() << endl;
+	c3.beRepaired(7);
 	cout << "--------------------" << endl << endl;
 }
