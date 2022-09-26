@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:36:45 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 10:39:45 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/26 10:53:56 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ FragTrap::FragTrap() : ClapTrap() {
 	this->setHitpoints(100);
 	cout << this->getType() << " DEFAULT constructor called" << endl;
 	this->setMaxhitpoints(100);
-	this->setEnergypoints(50);
-	this->setAttackdamage(20);
+	this->setEnergypoints(100);
+	this->setAttackdamage(30);
 	return;
 }
 
@@ -48,8 +48,8 @@ FragTrap::FragTrap( const string name) : ClapTrap( name ) {
 	this->setHitpoints(100);
 	cout << this->getType() << " NAMED constructor called" << endl;
 	this->setMaxhitpoints(100);
-	this->setEnergypoints(50);
-	this->setAttackdamage(20);
+	this->setEnergypoints(100);
+	this->setAttackdamage(30);
 	return;
 }
 
@@ -97,11 +97,11 @@ void	FragTrap::highFivesGuys( void ) {
 
 	if (this->getEnergypoints())
 	{
-		cout << this->getType() << " " <<  this->getName() << " high fives guys !" << endl;
+		cout << this->getType() << " " <<  this->getName() << " says \"high fives guys !\"" << endl;
 		this->setEnergypoints(getEnergypoints() - 1);
 	}
 	else
-		cout << this->getType() << " " <<  this->getName() << " coudn't say \"high fives guys !\"" << endl;
+		cout << this->getType() << " " <<  this->getName() << " coudn't say \"high fives guys !\" because he feel tired" << endl;
 	return;
 }
 

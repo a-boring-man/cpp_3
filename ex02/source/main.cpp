@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:50:16 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 10:40:35 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/26 10:52:16 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main( void ) {
 
 	// test sur l'attack et l'energy
 	cout << "-------------" << endl;
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		c1.attack("dummie");
 		cout << "energy : " << c1.getEnergypoints() << endl;
@@ -63,10 +63,10 @@ int	main( void ) {
 	cout << c3 << endl;
 	c3.beRepaired(7);
 	cout << c3 << endl;
-	for (int i = 0; i < 44; i++)
+	for (int i = 0; i < 94; i++)
 	{
 		c3.attack("dummie");
-		cout << "energy : " << c3.getEnergypoints() << endl << "life : " << c3.getHitpoints() << endl;
+		cout << "energy : " << c3.getEnergypoints() << endl;
 	}
 	c3.highFivesGuys(); // a commenter aussi du coup
 	cout << c3 << endl;
