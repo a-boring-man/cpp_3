@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:35:09 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/22 15:23:05 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/26 09:11:53 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ class ClapTrap
 		string	getName( void ) const;
 		void	setName( const string name );
 
+		string	getType( void ) const;
+		void	setType( const string type );
+	
 		int		getMaxhitpoints( void ) const;
 		void	setMaxhitpoints( unsigned int i );
 
@@ -53,6 +56,7 @@ class ClapTrap
 	private:
 
 		string	_Name;
+		string	_Type;
 		int		_Hit_points;
 		int		_Max_hitpoints;
 		int		_Energy_points;

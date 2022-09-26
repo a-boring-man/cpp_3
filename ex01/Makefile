@@ -6,12 +6,12 @@
 #    By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 13:52:06 by jrinna            #+#    #+#              #
-#    Updated: 2022/09/22 13:57:20 by jrinna           ###   ########lyon.fr    #
+#    Updated: 2022/09/22 15:41:21 by jrinna           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-LST_SRC := ClapTrap.cpp main.cpp
-LST_INC := ClapTrap.hpp
+LST_SRC := ClapTrap.cpp main.cpp ScavTrap.cpp
+LST_INC := ClapTrap.hpp ScavTrap.hpp
 LST_OBJ := ${LST_SRC:.cpp=.o}
 
 DIR_SRC := source
@@ -24,7 +24,7 @@ INC := ${addprefix ${DIR_INC}/,${LST_INC}}
 
 CC := c++ -std=c++98
 CFLAGS := -Wall -Wextra -Werror
-NAME := claptrap
+NAME := scavtrap
 
 all : ${NAME}
 

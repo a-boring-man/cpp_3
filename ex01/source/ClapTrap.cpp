@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:39:54 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/22 15:25:04 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/26 09:19:32 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@
 */
 
 // Default constructor :
-ClapTrap::ClapTrap() : _Name("unnamed"), _Hit_points(10), _Max_hitpoints(10) , _Energy_points(10), _Attack_damage(0) {
+ClapTrap::ClapTrap() : _Name("unnamed"), _Type("ClapTrap"), _Hit_points(10), _Max_hitpoints(10) , _Energy_points(10), _Attack_damage(0) {
 
-	cout << "ClapTrap DEFAULT constructor called" << endl;
+	cout << this->getType() << " DEFAULT constructor called" << endl;
 	return;
 }
 
 // Copy constructor :
-ClapTrap::ClapTrap( const ClapTrap & src ) : _Name(src._Name), _Hit_points(src._Hit_points), _Max_hitpoints(src._Max_hitpoints), _Energy_points(src._Hit_points), _Attack_damage(src._Attack_damage) {
+ClapTrap::ClapTrap( const ClapTrap & src ) : _Name(src._Name), _Type(src._Type), _Hit_points(src._Hit_points), _Max_hitpoints(src._Max_hitpoints), _Energy_points(src._Hit_points), _Attack_damage(src._Attack_damage) {
 
-	cout << "ClapTrap COPY constructor called" << endl;
+	cout << this->getType() << " COPY constructor called" << endl;
 	return;
 }
 
 // Name constructor :
-ClapTrap::ClapTrap( const string name) : _Name(name), _Hit_points(10), _Max_hitpoints(10) , _Energy_points(10), _Attack_damage(0) {
+ClapTrap::ClapTrap( const string name) : _Name(name), _Type("ClapTrap"), _Hit_points(10), _Max_hitpoints(10) , _Energy_points(10), _Attack_damage(0) {
 
-	cout << "ClapTrap NAMED constructor called" << endl;
+	cout << this->getType() << " NAMED constructor called" << endl;
 	return;
 }
 
@@ -43,7 +43,7 @@ ClapTrap::ClapTrap( const string name) : _Name(name), _Hit_points(10), _Max_hitp
 
 ClapTrap::~ClapTrap() {
 
-	cout << "ClapTrap destructor called" << endl;
+	cout << this->getType() << " destructor called" << endl;
 	return;
 }
 
@@ -56,7 +56,7 @@ ClapTrap &	ClapTrap::operator=( ClapTrap const & rhs )
 {
 	if ( this != &rhs )
 	{
-		cout << "ClapTrap ASIGNATION operator called" << endl;
+		cout << this->getType() << " ASIGNATION operator called" << endl;
 		this->_Name = rhs.getName();
 		this->_Hit_points = rhs.getHitpoints();
 		this->_Energy_points = rhs.getEnergypoints();
@@ -68,7 +68,7 @@ ClapTrap &	ClapTrap::operator=( ClapTrap const & rhs )
 // Operator << :
 std::ostream &	operator<<( std::ostream & o, ClapTrap const & C )
 {
-	o << "Name : " << C.getName() << endl << "Hit points : "<< C.getHitpoints() << endl << "Energy points : "<< C.getEnergypoints() << endl << "Attack damage : " << C.getAttackdamage() << endl;
+	o << "Name : " << C.getName() << endl << "Hit points : "<< C.getHitpoints() << endl << "Energy points : "<< C.getEnergypoints() << endl << "Attack damage : " << C.getAttackdamage() << endl << "Type : " << C.getType() << endl;
 	return o;
 }
 
@@ -80,28 +80,28 @@ void	ClapTrap::attack( const string &target ) {
 
 	if (this->getEnergypoints() && this->getHitpoints())
 	{
-		cout << "ClapTrap " << this->getName() << " attacks " << target << ", causing " << this->getAttackdamage() << " point of damage !" << endl;
+		cout << this->getType() << " " << this->getName() << " attacks " << target << ", causing " << this->getAttackdamage() << " point of damage !" << endl;
 		this->setEnergypoints( std::max(this->getEnergypoints() - 1, 0) );
 	}
 	else if (this->getHitpoints())
-		cout << "ClapTrap " << this->getName() << " try to attacks " << target << " but lack the energy to do it" << endl;
+		cout << this->getType() << " " << this->getName() << " try to attacks " << target << " but lack the energy to do it" << endl;
 	else
-		cout << "ClapTrap " << this->getName() << " try to attacks " << target << " but can't because he's dead" << endl;
+		cout << this->getType() << " " << this->getName() << " try to attacks " << target << " but can't because he's dead" << endl;
 	return;
 }
 
 void	ClapTrap::takeDamage( unsigned int amount ) {
 
 	if (this->getHitpoints() <= 0)
-		cout << "ClapTrap " << this->getName() << " take 0 damage because he's already dead..." << endl;
+		cout << this->getType() << " " << this->getName() << " take 0 damage because he's already dead..." << endl;
 	else if ((unsigned int)( this->getHitpoints() ) <= amount )
 	{
-		cout << "ClapTrap " << this->getName() << " take " << this->getHitpoints() << " damage and die like the looser he is" << endl;
+		cout << this->getType() << " " << this->getName() << " take " << this->getHitpoints() << " damage and die like the looser he is" << endl;
 		this->setHitpoints(0);
 	}
 	else
 	{
-		cout << "ClapTrap " << this->getName() << " take " << amount << " damage and tank it like the real robot he is" << endl;
+		cout << this->getType() << " " << this->getName() << " take " << amount << " damage and tank it like the real robot he is" << endl;
 		this->setHitpoints(this->getHitpoints() - amount);
 	}
 	return;
@@ -110,19 +110,21 @@ void	ClapTrap::takeDamage( unsigned int amount ) {
 void	ClapTrap::beRepaired( unsigned int amount ) {
 
 	if (this->getHitpoints() <= 0)
-		cout << "ClapTrap " << this->getName() << " couldn't heal because he's already dead..." << endl;
+		cout << this->getType() << " " << this->getName() << " couldn't heal because he's already dead..." << endl;
 	else if (this->getEnergypoints() && (unsigned int)( this->getMaxhitpoints() - this->getHitpoints() ) <= amount)
 	{
-		cout << "ClapTrap " << this->getName() << " heal " << this->getMaxhitpoints() - this->getHitpoints() << " damage and feel heathy" << endl;
+		cout << this->getType() << " " << this->getName() << " heal " << this->getMaxhitpoints() - this->getHitpoints() << " damage and feel heathy" << endl;
 		this->setHitpoints(this->getMaxhitpoints());
 	}
 	else if (this->getEnergypoints())
 	{
-		cout << "ClapTrap " << this->getName() << " heal " << amount << " of damage" << endl;
+		cout << this->getType() << " " << this->getName() << " heal " << amount << " of damage" << endl;
 		this->setHitpoints(this->getHitpoints() + amount);
 	}
+	else if (this->getHitpoints() == this->getMaxhitpoints())
+		cout << this->getType() << " is already feeling super good and have no need to heal" << endl;
 	else
-		cout << "ClapTrap " << this->getName() << " try to heal himslefs but fail" << endl;
+		cout << this->getType() << " " << this->getName() << " try to heal himslefs but fail" << endl;
 	this->setEnergypoints(std::max(this->getEnergypoints() - 1, 0));
 }
 
@@ -138,7 +140,20 @@ string	ClapTrap::getName( void ) const {
 
 void	ClapTrap::setName( const string name ) {
 
-	this->_name = name;
+	this->_Name = name;
+	return;
+}
+
+// type :
+string	ClapTrap::getType( void ) const {
+
+	return (this->_Type);
+}
+
+void	ClapTrap::setType( const string type ) {
+
+	this->_Type = type;
+	return;
 }
 
 // max hitpoint :

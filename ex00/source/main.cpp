@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:50:16 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/22 14:33:03 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/26 09:06:25 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main( void ) {
 
 	// test sur le soin
 	cout << "-------------" << endl;
+	c3.beRepaired(10);
 	c3.attack("dummie");
 	c3.takeDamage(3);
 	cout << "energy : " << c3.getEnergypoints() << endl << "life : " << c3.getHitpoints() << endl;

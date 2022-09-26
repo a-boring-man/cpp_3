@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:39:54 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/22 14:31:18 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/26 09:04:33 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 		cout << "ClapTrap " << this->getName() << " heal " << amount << " of damage" << endl;
 		this->setHitpoints(this->getHitpoints() + amount);
 	}
+	else if (this->getHitpoints() == this->getMaxhitpoints())
+		cout << "ClapTrap is already feeling super good and have no need to heal" << endl;
 	else
 		cout << "ClapTrap " << this->getName() << " try to heal himslefs but fail" << endl;
 	this->setEnergypoints(std::max(this->getEnergypoints() - 1, 0));
