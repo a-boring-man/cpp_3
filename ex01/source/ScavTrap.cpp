@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:32:51 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 09:17:42 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/26 10:31:04 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,24 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-//Default constructor :
+// Default constructor :
 ScavTrap::ScavTrap() : ClapTrap() {
 
-	cout << "ScapTrap DEFAULT constructor called" << endl;
+	this->setType("ScavTrap");
 	this->setHitpoints(100);
+	cout << this->getType() << " DEFAULT constructor called" << endl;
 	this->setMaxhitpoints(100);
 	this->setEnergypoints(50);
 	this->setAttackdamage(20);
 	return;
 }
 
+// Copy constructor :
 ScavTrap::ScavTrap( const ScavTrap & src ) {
 
-	cout << "ScavTrap COPY constructor called" << endl;
 	this->setName(src.getName());
+	this->setType(src.getType());
+	cout << this->getType() << " COPY constructor called" << endl;
 	this->setHitpoints(src.getHitpoints());
 	this->setMaxhitpoints(src.getMaxhitpoints());
 	this->setEnergypoints(src.getEnergypoints());
@@ -39,10 +42,14 @@ ScavTrap::ScavTrap( const ScavTrap & src ) {
 }
 
 // Name constructor :
-ScavTrap::ScavTrap( const string name) : ClapTrap() {
+ScavTrap::ScavTrap( const string name) : ClapTrap( name ) {
 
-	(void)name;
-	cout << "ScavTrap NAMED constructor called" << endl;
+	this->setType("ScavTrap");
+	this->setHitpoints(100);
+	cout << this->getType() << " NAMED constructor called" << endl;
+	this->setMaxhitpoints(100);
+	this->setEnergypoints(50);
+	this->setAttackdamage(20);
 	return;
 }
 
@@ -50,8 +57,10 @@ ScavTrap::ScavTrap( const string name) : ClapTrap() {
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-ScavTrap::~ScavTrap()
-{
+ScavTrap::~ScavTrap() {
+
+	cout << this->getType() << " Destructor called" << endl;
+	return;
 }
 
 
@@ -59,14 +68,19 @@ ScavTrap::~ScavTrap()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-/* ScavTrap &				ScavTrap::operator=( ScavTrap const & rhs )
+ScavTrap &				ScavTrap::operator=( ScavTrap const & rhs )
 {
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
+	if ( this != &rhs )
+	{
+		this->setName(rhs.getName());
+		this->setType(rhs.getType());
+		this->setHitpoints(rhs.getHitpoints());
+		this->setMaxhitpoints(rhs.getMaxhitpoints());
+		this->setEnergypoints(rhs.getEnergypoints());
+		this->setAttackdamage(rhs.getAttackdamage());
+	}
 	return *this;
-} */
+}
 
 std::ostream &			operator<<( std::ostream & o, ScavTrap const & S )
 {
@@ -79,17 +93,15 @@ std::ostream &			operator<<( std::ostream & o, ScavTrap const & S )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	ScavTrap::attack( const string &target ) {
+void	ScavTrap::guardGate( void ) {
 
-	if (this->getEnergypoints() && this->getHitpoints())
+	if (this->getEnergypoints())
 	{
-		cout << "ScavTrap " << this->getName() << " attacks " << target << ", causing " << this->getAttackdamage() << " point of damage !" << endl;
-		this->setEnergypoints( std::max(this->getEnergypoints() - 1, 0) );
+		cout << this->getType() << " " <<  this->getName() << " has enter Gate keeper mode" << endl;
+		this->setEnergypoints(getEnergypoints() - 1);
 	}
-	else if (this->getHitpoints())
-		cout << "ScavTrap " << this->getName() << " try to attacks " << target << " but lack the energy to do it" << endl;
 	else
-		cout << "ScavTrap " << this->getName() << " try to attacks " << target << " but can't because he's dead" << endl;
+		cout << this->getType() << " " <<  this->getName() << " coudn't enter Gate keeper mode because he has no energy left" << endl;
 	return;
 }
 

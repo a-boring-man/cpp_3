@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:16:55 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/22 16:44:58 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/26 10:29:44 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ class ScavTrap : public ClapTrap
 		ScavTrap( const string name );
 		~ScavTrap();
 
-		void	attack( const string &target );
+		ScavTrap	&operator=( ScavTrap const & rhs );
+
+		void	guardGate( void );
 
 };
 

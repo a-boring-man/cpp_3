@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:39:54 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 09:19:32 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/26 10:33:59 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ ClapTrap::ClapTrap( const string name) : _Name(name), _Type("ClapTrap"), _Hit_po
 
 ClapTrap::~ClapTrap() {
 
-	cout << this->getType() << " destructor called" << endl;
+	cout << this->getType() << " ClapTrap destructor called" << endl;
 	return;
 }
 
@@ -58,6 +58,7 @@ ClapTrap &	ClapTrap::operator=( ClapTrap const & rhs )
 	{
 		cout << this->getType() << " ASIGNATION operator called" << endl;
 		this->_Name = rhs.getName();
+		this->_Type = rhs.getType();
 		this->_Hit_points = rhs.getHitpoints();
 		this->_Energy_points = rhs.getEnergypoints();
 		this->_Attack_damage = rhs.getAttackdamage();
@@ -111,6 +112,8 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 
 	if (this->getHitpoints() <= 0)
 		cout << this->getType() << " " << this->getName() << " couldn't heal because he's already dead..." << endl;
+	else if (this->getHitpoints() == this->getMaxhitpoints())
+		cout << this->getType() << " is already feeling super good and have no need to heal" << endl;
 	else if (this->getEnergypoints() && (unsigned int)( this->getMaxhitpoints() - this->getHitpoints() ) <= amount)
 	{
 		cout << this->getType() << " " << this->getName() << " heal " << this->getMaxhitpoints() - this->getHitpoints() << " damage and feel heathy" << endl;
@@ -121,8 +124,6 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 		cout << this->getType() << " " << this->getName() << " heal " << amount << " of damage" << endl;
 		this->setHitpoints(this->getHitpoints() + amount);
 	}
-	else if (this->getHitpoints() == this->getMaxhitpoints())
-		cout << this->getType() << " is already feeling super good and have no need to heal" << endl;
 	else
 		cout << this->getType() << " " << this->getName() << " try to heal himslefs but fail" << endl;
 	this->setEnergypoints(std::max(this->getEnergypoints() - 1, 0));
