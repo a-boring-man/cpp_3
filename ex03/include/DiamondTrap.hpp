@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 10:37:01 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 11:01:46 by jrinna           ###   ########lyon.fr   */
+/*   Created: 2022/09/26 13:25:20 by jrinna            #+#    #+#             */
+/*   Updated: 2022/09/27 11:34:13 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include <iostream>
-# include <string>
-# include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
-class FragTrap : public ClapTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 
 	public:
 
-		FragTrap();
-		FragTrap( FragTrap const & src );
-		FragTrap( const string name );
-		~FragTrap();
+		DiamondTrap();
+		DiamondTrap( DiamondTrap const & src );
+		DiamondTrap( const string name );
+		~DiamondTrap();
 
-		FragTrap	&operator=( FragTrap const & rhs );
+		DiamondTrap &		operator=( DiamondTrap const & rhs );
 
-		void	highFivesGuys( void );
+		void	whoAmI( void );
 
+	private:
+
+		string	_Name;
 };
 
-
-std::ostream &			operator<<( std::ostream & o, FragTrap const & F );
+std::ostream &			operator<<( std::ostream & o, DiamondTrap const & D );

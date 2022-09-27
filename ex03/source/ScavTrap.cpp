@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:32:51 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 11:03:31 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 10:25:01 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ ScavTrap::ScavTrap( const string name) : ClapTrap( name ) {
 
 ScavTrap::~ScavTrap() {
 
-	cout << this->getType() << " Destructor called" << endl;
+	cout << this->getType() << " ScavTrap Destructor called" << endl;
 	return;
 }
 

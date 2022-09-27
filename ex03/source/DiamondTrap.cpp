@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 15:32:51 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 11:03:31 by jrinna           ###   ########lyon.fr   */
+/*   Created: 2022/09/26 13:25:17 by jrinna            #+#    #+#             */
+/*   Updated: 2022/09/27 11:44:23 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-// Default constructor :
-ScavTrap::ScavTrap() : ClapTrap() {
+// Default constructor : 
+DiamondTrap::DiamondTrap() {
 
-	this->setType("ScavTrap");
-	this->setHitpoints(100);
+	this->_Name = "unamed";
+	this->setType("DiamondTrap");
 	cout << this->getType() << " DEFAULT constructor called" << endl;
-	this->setMaxhitpoints(100);
-	this->setEnergypoints(50);
-	this->setAttackdamage(20);
-	return;
+	this->setEnergypoints(50); // a modifier
 }
 
 // Copy constructor :
-ScavTrap::ScavTrap( const ScavTrap & src ) {
+DiamondTrap::DiamondTrap( const DiamondTrap & src ) {
 
 	this->setName(src.getName());
 	this->setType(src.getType());
@@ -42,24 +39,23 @@ ScavTrap::ScavTrap( const ScavTrap & src ) {
 }
 
 // Name constructor :
-ScavTrap::ScavTrap( const string name) : ClapTrap( name ) {
+DiamondTrap::DiamondTrap( const string name ) : ClapTrap(name), ScavTrap(name), FragTrap(name) {
 
-	this->setType("ScavTrap");
+	this->setType("DiamondTrap");
 	this->setHitpoints(100);
 	cout << this->getType() << " NAMED constructor called" << endl;
 	this->setMaxhitpoints(100);
-	this->setEnergypoints(50);
-	this->setAttackdamage(20);
-	return;
+	this->setEnergypoints(50); // a modifier
+	this->setAttackdamage(30);
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-ScavTrap::~ScavTrap() {
-
-	cout << this->getType() << " Destructor called" << endl;
+DiamondTrap::~DiamondTrap()
+{
+	cout << this->getType() << " DiamondTrap Destructor called" << endl;
 	return;
 }
 
@@ -68,7 +64,7 @@ ScavTrap::~ScavTrap() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-ScavTrap &				ScavTrap::operator=( ScavTrap const & rhs )
+DiamondTrap &				DiamondTrap::operator=( DiamondTrap const & rhs )
 {
 	if ( this != &rhs )
 	{
@@ -82,9 +78,9 @@ ScavTrap &				ScavTrap::operator=( ScavTrap const & rhs )
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, ScavTrap const & S )
+std::ostream &			operator<<( std::ostream & o, DiamondTrap const & D )
 {
-	o << "Name : " << S.getName() << endl << "Type : " << S.getType() << endl << "Hit points : "<< S.getHitpoints() << endl << "Energy points : "<< S.getEnergypoints() << endl << "Attack damage : " << S.getAttackdamage() << endl;
+	o << "Name : " << D.getName() << endl << "Type : " << D.getType() << endl << "Hit points : "<< D.getHitpoints() << endl << "Energy points : "<< D.getEnergypoints() << endl << "Attack damage : " << D.getAttackdamage() << endl;
 	return o;
 }
 
@@ -93,16 +89,9 @@ std::ostream &			operator<<( std::ostream & o, ScavTrap const & S )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	ScavTrap::guardGate( void ) {
+void	DiamondTrap::whoAmI( void ) {
 
-	if (this->getEnergypoints())
-	{
-		cout << this->getType() << " " <<  this->getName() << " has enter Gate keeper mode" << endl;
-		this->setEnergypoints(getEnergypoints() - 1);
-	}
-	else
-		cout << this->getType() << " " <<  this->getName() << " coudn't enter Gate keeper mode because he has no energy left" << endl;
-	return;
+	cout << this->_Name << this->getName() << endl;
 }
 
 /*

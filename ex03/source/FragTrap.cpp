@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 15:32:51 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 11:03:31 by jrinna           ###   ########lyon.fr   */
+/*   Created: 2022/09/26 10:36:45 by jrinna            #+#    #+#             */
+/*   Updated: 2022/09/27 10:24:52 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
 // Default constructor :
-ScavTrap::ScavTrap() : ClapTrap() {
+FragTrap::FragTrap() : ClapTrap() {
 
-	this->setType("ScavTrap");
+	this->setType("FragTrap");
 	this->setHitpoints(100);
 	cout << this->getType() << " DEFAULT constructor called" << endl;
 	this->setMaxhitpoints(100);
-	this->setEnergypoints(50);
-	this->setAttackdamage(20);
+	this->setEnergypoints(100);
+	this->setAttackdamage(30);
 	return;
 }
 
 // Copy constructor :
-ScavTrap::ScavTrap( const ScavTrap & src ) {
+FragTrap::FragTrap( const FragTrap & src ) {
 
 	this->setName(src.getName());
 	this->setType(src.getType());
@@ -42,14 +42,14 @@ ScavTrap::ScavTrap( const ScavTrap & src ) {
 }
 
 // Name constructor :
-ScavTrap::ScavTrap( const string name) : ClapTrap( name ) {
+FragTrap::FragTrap( const string name) : ClapTrap( name ) {
 
-	this->setType("ScavTrap");
+	this->setType("FragTrap");
 	this->setHitpoints(100);
 	cout << this->getType() << " NAMED constructor called" << endl;
 	this->setMaxhitpoints(100);
-	this->setEnergypoints(50);
-	this->setAttackdamage(20);
+	this->setEnergypoints(100);
+	this->setAttackdamage(30);
 	return;
 }
 
@@ -57,9 +57,9 @@ ScavTrap::ScavTrap( const string name) : ClapTrap( name ) {
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-ScavTrap::~ScavTrap() {
+FragTrap::~FragTrap() {
 
-	cout << this->getType() << " Destructor called" << endl;
+	cout << this->getType() << " FragTrap Destructor called" << endl;
 	return;
 }
 
@@ -68,7 +68,7 @@ ScavTrap::~ScavTrap() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-ScavTrap &				ScavTrap::operator=( ScavTrap const & rhs )
+FragTrap &				FragTrap::operator=( FragTrap const & rhs )
 {
 	if ( this != &rhs )
 	{
@@ -82,7 +82,7 @@ ScavTrap &				ScavTrap::operator=( ScavTrap const & rhs )
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, ScavTrap const & S )
+std::ostream &			operator<<( std::ostream & o, FragTrap const & S )
 {
 	o << "Name : " << S.getName() << endl << "Type : " << S.getType() << endl << "Hit points : "<< S.getHitpoints() << endl << "Energy points : "<< S.getEnergypoints() << endl << "Attack damage : " << S.getAttackdamage() << endl;
 	return o;
@@ -93,15 +93,15 @@ std::ostream &			operator<<( std::ostream & o, ScavTrap const & S )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	ScavTrap::guardGate( void ) {
+void	FragTrap::highFivesGuys( void ) {
 
 	if (this->getEnergypoints())
 	{
-		cout << this->getType() << " " <<  this->getName() << " has enter Gate keeper mode" << endl;
+		cout << this->getType() << " " <<  this->getName() << " says \"high fives guys !\"" << endl;
 		this->setEnergypoints(getEnergypoints() - 1);
 	}
 	else
-		cout << this->getType() << " " <<  this->getName() << " coudn't enter Gate keeper mode because he has no energy left" << endl;
+		cout << this->getType() << " " <<  this->getName() << " coudn't say \"high fives guys !\" because he feel tired" << endl;
 	return;
 }
 

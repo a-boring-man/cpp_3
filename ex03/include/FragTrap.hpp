@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:37:01 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 11:01:46 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/26 14:20:32 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <string>
 # include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 
 	public:
@@ -33,4 +33,4 @@ class FragTrap : public ClapTrap
 };
 
 
-std::ostream &			operator<<( std::ostream & o, FragTrap const & F );
+std::ostream &			operator<<( std::ostream & o, FragTrap const & S );
