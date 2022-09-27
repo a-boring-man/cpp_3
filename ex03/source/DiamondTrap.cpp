@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:25:17 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 14:58:20 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 15:43:46 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ DiamondTrap &				DiamondTrap::operator=( DiamondTrap const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, DiamondTrap const & D )
 {
-	o << "Name : " << D.getName() << endl << "Type : " << D.getType() << endl << "Hit points : "<< D.getHitpoints() << endl << "Energy points : "<< D.getEnergypoints() << endl << "Attack damage : " << D.getAttackdamage() << endl;
+	o << "Name : " << D.getDiam_name() << " grandson of : " << D.getName() << endl << "Type : " << D.getType() << endl << "Hit points : "<< D.getHitpoints() << endl << "Energy points : "<< D.getEnergypoints() << endl << "Attack damage : " << D.getAttackdamage() << endl;
 	return o;
 }
 
@@ -97,12 +97,17 @@ std::ostream &			operator<<( std::ostream & o, DiamondTrap const & D )
 
 void	DiamondTrap::whoAmI( void ) {
 
-	cout << this->_Name << endl; // ne marche pas
+	cout << "i am : " << this->_Name << "grandson of : " << this->getName() << endl;
+	return;
 }
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
+string	DiamondTrap::getDiam_name( void ) const {
+
+	return(this->_Name);
+}
 
 /* ************************************************************************** */

@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:50:16 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 14:18:41 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 15:42:54 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main( void ) {
 	DiamondTrap	c1;
 	cout << c1 << endl;
 
-	c1.whoAmI();
 	c1.takeDamage(10);
 	DiamondTrap	c2(c1);
 	cout << c2 << endl;

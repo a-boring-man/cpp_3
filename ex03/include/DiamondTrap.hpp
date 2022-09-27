@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:25:20 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 14:36:20 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 15:42:15 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ class DiamondTrap : public ScavTrap, public FragTrap
 
 		DiamondTrap &		operator=( DiamondTrap const & rhs );
 
-		using ScavTrap::attack;
+		using 	ScavTrap::attack;
+		string	getDiam_name( void ) const;
 
 		void	whoAmI( void );
 
