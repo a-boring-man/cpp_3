@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:35:09 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 09:11:53 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 14:38:53 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 using std::cout;
 using std::endl;
 using std::string;
+
+# define CLAP_HIT_POINTS 10
+# define CLAP_MAX_HIT_POINTS 10
+# define CLAP_ENERGY_POINTS 10
+# define CLAP_ATTACK_DAMAGE 0
 
 class ClapTrap
 {
@@ -53,7 +58,7 @@ class ClapTrap
 		int		getAttackdamage( void ) const;
 		void	setAttackdamage( int i );
 
-	private:
+	protected:
 
 		string	_Name;
 		string	_Type;

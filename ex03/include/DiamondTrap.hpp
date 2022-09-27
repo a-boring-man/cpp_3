@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:25:20 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 11:34:13 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 14:36:20 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,16 @@ class DiamondTrap : public ScavTrap, public FragTrap
 
 		DiamondTrap &		operator=( DiamondTrap const & rhs );
 
+		using ScavTrap::attack;
+
 		void	whoAmI( void );
 
 	private:
 
 		string	_Name;
+		using ScavTrap::_Energy_points;
+		using FragTrap::_Attack_damage;
+		using FragTrap::_Hit_points;
 };
 
 std::ostream &			operator<<( std::ostream & o, DiamondTrap const & D );

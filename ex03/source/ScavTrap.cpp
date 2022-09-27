@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:32:51 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 10:25:01 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 15:10:10 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 ScavTrap::ScavTrap() : ClapTrap() {
 
 	this->setType("ScavTrap");
-	this->setHitpoints(100);
+	this->setHitpoints(SCAV_HIT_POINTS);
 	cout << this->getType() << " DEFAULT constructor called" << endl;
-	this->setMaxhitpoints(100);
-	this->setEnergypoints(50);
-	this->setAttackdamage(20);
+	this->setMaxhitpoints(SCAV_MAX_HIT_POINTS);
+	this->setEnergypoints(SCAV_ENERGY_POINTS);
+	this->setAttackdamage(SCAV_ATTACK_DAMAGE);
 	return;
 }
 
@@ -45,11 +45,11 @@ ScavTrap::ScavTrap( const ScavTrap & src ) {
 ScavTrap::ScavTrap( const string name) : ClapTrap( name ) {
 
 	this->setType("ScavTrap");
-	this->setHitpoints(100);
+	this->setHitpoints(SCAV_HIT_POINTS);
 	cout << this->getType() << " NAMED constructor called" << endl;
-	this->setMaxhitpoints(100);
-	this->setEnergypoints(50);
-	this->setAttackdamage(20);
+	this->setMaxhitpoints(SCAV_MAX_HIT_POINTS);
+	this->setEnergypoints(SCAV_ENERGY_POINTS);
+	this->setAttackdamage(SCAV_ATTACK_DAMAGE);
 	return;
 }
 

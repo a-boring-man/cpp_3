@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:39:54 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 11:18:32 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 15:08:35 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 
 // Default constructor :
-ClapTrap::ClapTrap() : _Name("unnamed"), _Type("ClapTrap"), _Hit_points(10), _Max_hitpoints(10) , _Energy_points(10), _Attack_damage(0) {
+ClapTrap::ClapTrap() : _Name("unnamed"), _Type("ClapTrap"), _Hit_points(CLAP_HIT_POINTS), _Max_hitpoints(CLAP_MAX_HIT_POINTS) , _Energy_points(CLAP_ENERGY_POINTS), _Attack_damage(CLAP_ATTACK_DAMAGE) {
 
 	cout << this->getType() << " DEFAULT constructor called" << endl;
 	return;
@@ -31,7 +31,7 @@ ClapTrap::ClapTrap( const ClapTrap & src ) : _Name(src._Name), _Type(src._Type),
 }
 
 // Name constructor :
-ClapTrap::ClapTrap( const string name) : _Name(name), _Type("ClapTrap"), _Hit_points(10), _Max_hitpoints(10) , _Energy_points(10), _Attack_damage(0) {
+ClapTrap::ClapTrap( const string name) : _Name(name), _Type("ClapTrap"), _Hit_points(CLAP_HIT_POINTS), _Max_hitpoints(CLAP_MAX_HIT_POINTS) , _Energy_points(CLAP_ENERGY_POINTS), _Attack_damage(CLAP_ATTACK_DAMAGE) {
 
 	cout << this->getType() << " NAMED constructor called" << endl;
 	return;

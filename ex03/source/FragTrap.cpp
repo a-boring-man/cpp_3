@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:36:45 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 10:24:52 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 15:11:07 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 FragTrap::FragTrap() : ClapTrap() {
 
 	this->setType("FragTrap");
-	this->setHitpoints(100);
+	this->setHitpoints(FRAG_HIT_POINTS);
 	cout << this->getType() << " DEFAULT constructor called" << endl;
-	this->setMaxhitpoints(100);
-	this->setEnergypoints(100);
-	this->setAttackdamage(30);
+	this->setMaxhitpoints(FRAG_MAX_HIT_POINTS);
+	this->setEnergypoints(FRAG_ENERGY_POINTS);
+	this->setAttackdamage(FRAG_ATTACK_DAMAGE);
 	return;
 }
 
@@ -45,11 +45,11 @@ FragTrap::FragTrap( const FragTrap & src ) {
 FragTrap::FragTrap( const string name) : ClapTrap( name ) {
 
 	this->setType("FragTrap");
-	this->setHitpoints(100);
+	this->setHitpoints(FRAG_HIT_POINTS);
 	cout << this->getType() << " NAMED constructor called" << endl;
-	this->setMaxhitpoints(100);
-	this->setEnergypoints(100);
-	this->setAttackdamage(30);
+	this->setMaxhitpoints(FRAG_MAX_HIT_POINTS);
+	this->setEnergypoints(FRAG_ENERGY_POINTS);
+	this->setAttackdamage(FRAG_ATTACK_DAMAGE);
 	return;
 }
 

@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:25:17 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 11:44:23 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 14:58:20 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@
 */
 
 // Default constructor : 
-DiamondTrap::DiamondTrap() {
+DiamondTrap::DiamondTrap() : ClapTrap("unamed_clap_name") {
 
 	this->_Name = "unamed";
 	this->setType("DiamondTrap");
 	cout << this->getType() << " DEFAULT constructor called" << endl;
-	this->setEnergypoints(50); // a modifier
+	this->setHitpoints(FRAG_HIT_POINTS);
+	this->setMaxhitpoints(FRAG_MAX_HIT_POINTS);
+	this->setEnergypoints(SCAV_ENERGY_POINTS);
+	this->setAttackdamage(FRAG_ATTACK_DAMAGE);
+	return;
 }
 
 // Copy constructor :
@@ -39,14 +43,16 @@ DiamondTrap::DiamondTrap( const DiamondTrap & src ) {
 }
 
 // Name constructor :
-DiamondTrap::DiamondTrap( const string name ) : ClapTrap(name), ScavTrap(name), FragTrap(name) {
+DiamondTrap::DiamondTrap( const string name ) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
 
 	this->setType("DiamondTrap");
-	this->setHitpoints(100);
+	this->_Name = name;
 	cout << this->getType() << " NAMED constructor called" << endl;
-	this->setMaxhitpoints(100);
-	this->setEnergypoints(50); // a modifier
-	this->setAttackdamage(30);
+	this->setHitpoints(FRAG_HIT_POINTS);
+	this->setMaxhitpoints(FRAG_MAX_HIT_POINTS);
+	this->setEnergypoints(SCAV_ENERGY_POINTS);
+	this->setAttackdamage(FRAG_ATTACK_DAMAGE);
+	return;
 }
 
 /*
@@ -91,7 +97,7 @@ std::ostream &			operator<<( std::ostream & o, DiamondTrap const & D )
 
 void	DiamondTrap::whoAmI( void ) {
 
-	cout << this->_Name << this->getName() << endl;
+	cout << this->_Name << endl; // ne marche pas
 }
 
 /*

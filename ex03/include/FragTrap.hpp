@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:37:01 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 14:20:32 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/27 14:39:48 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 # include <iostream>
 # include <string>
 # include "ClapTrap.hpp"
+
+# define FRAG_HIT_POINTS 100
+# define FRAG_MAX_HIT_POINTS 100
+# define FRAG_ENERGY_POINTS 100
+# define FRAG_ATTACK_DAMAGE 30
 
 class FragTrap : virtual public ClapTrap
 {
