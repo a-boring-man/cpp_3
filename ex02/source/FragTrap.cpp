@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 10:36:45 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/26 11:03:22 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/28 09:11:08 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ FragTrap &				FragTrap::operator=( FragTrap const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, FragTrap const & F )
 {
-	o << "Name : " << F.getName() << endl << "Type : " << S.getType() << endl << "Hit points : "<< F.getHitpoints() << endl << "Energy points : "<< F.getEnergypoints() << endl << "Attack damage : " << F.getAttackdamage() << endl;
+	o << "Name : " << F.getName() << endl << "Type : " << F.getType() << endl << "Hit points : "<< F.getHitpoints() << endl << "Energy points : "<< F.getEnergypoints() << endl << "Attack damage : " << F.getAttackdamage() << endl;
 	return o;
 }
 
