@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:16:55 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 14:39:23 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/28 08:52:39 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ class ScavTrap : virtual public ClapTrap
 		~ScavTrap();
 
 		ScavTrap	&operator=( ScavTrap const & rhs );
+
+		void	attack( const string &target );
 
 		void	guardGate( void );
 

@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:32:51 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 15:10:10 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/28 08:54:16 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,20 @@ void	ScavTrap::guardGate( void ) {
 	}
 	else
 		cout << this->getType() << " " <<  this->getName() << " coudn't enter Gate keeper mode because he has no energy left" << endl;
+	return;
+}
+
+void	ScavTrap::attack( const string &target ) {
+
+	if (this->getEnergypoints() && this->getHitpoints())
+	{
+		cout << this->getType() << " " << this->getName() << " use ScavTrap style attacks on " << target << ", causing " << this->getAttackdamage() << " point of damage !" << endl;
+		this->setEnergypoints( std::max(this->getEnergypoints() - 1, 0) );
+	}
+	else if (this->getHitpoints())
+		cout << this->getType() << " " << this->getName() << " try to use ScavTrap style attacks " << target << " but lack the energy to do it" << endl;
+	else
+		cout << this->getType() << " " << this->getName() << " try to use ScavTrap style attacks " << target << " but can't because he's dead" << endl;
 	return;
 }
 

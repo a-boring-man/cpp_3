@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 13:25:17 by jrinna            #+#    #+#             */
-/*   Updated: 2022/09/27 15:43:46 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/09/28 08:51:17 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ DiamondTrap::DiamondTrap() : ClapTrap("unamed_clap_name") {
 }
 
 // Copy constructor :
-DiamondTrap::DiamondTrap( const DiamondTrap & src ) {
+DiamondTrap::DiamondTrap( const DiamondTrap & src ) : ClapTrap(src.getName()) {
 
-	this->setName(src.getName());
+	this->_Name = src.getDiam_name();
 	this->setType(src.getType());
 	cout << this->getType() << " COPY constructor called" << endl;
 	this->setHitpoints(src.getHitpoints());
@@ -74,6 +74,7 @@ DiamondTrap &				DiamondTrap::operator=( DiamondTrap const & rhs )
 {
 	if ( this != &rhs )
 	{
+		this->_Name = rhs.getDiam_name();
 		this->setName(rhs.getName());
 		this->setType(rhs.getType());
 		this->setHitpoints(rhs.getHitpoints());
@@ -97,7 +98,7 @@ std::ostream &			operator<<( std::ostream & o, DiamondTrap const & D )
 
 void	DiamondTrap::whoAmI( void ) {
 
-	cout << "i am : " << this->_Name << "grandson of : " << this->getName() << endl;
+	cout << "i am : " << this->_Name << " grandson of : " << this->getName() << endl;
 	return;
 }
 
